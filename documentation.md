@@ -232,7 +232,7 @@ WHERE
     p.osm_id = '34149497'
 LIMIT 1
 ```
-- query stations areals
+- query station areals
 ```
 WITH station AS (
 	SELECT 
@@ -257,7 +257,7 @@ FROM
 WHERE 
     (st_within(station.way, p.way))
 ```
-- query special places
+- query station near special places
     - from points
     ```
     WITH station AS (
