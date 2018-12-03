@@ -1,0 +1,60 @@
+.station-info {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.station-info .station-info-close {
+    align-items: center;
+    display: flex;
+    font-size: 14pt;
+    cursor: pointer;
+}
+
+.station-info .station-info-close:hover {
+    font-weight: bold;
+}
+
+.station-info .station-type-logo img {
+    width: 40px;
+    height: 40px;
+    margin-left: 8px;
+    transform: translateY(-3px);
+}
+
+.station-info .station-info-close button {
+    border: none;
+    color: white;
+    background: transparent;
+    padding: 10px 0;
+}
+
+.station-info .station-info-close button div {
+    transform: translateY(-2px);
+}
+
+.station-info-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 11pt;
+}
+
+.station-info-details > span:first-child {
+    font-size: 21pt;
+    color: #f4e641;
+}
+
+.administration-area {
+    display: flex;
+    flex-direction: column;
+    font-size: 11pt;
+    margin-top: 12px;
+    opacity: 0.4;
+    margin-bottom: 12px;
+}
+
+.station-importance {
+    font-size: 11pt;
+    color: #d11a1a;
+    margin-top: 20px;
+}

@@ -1,0 +1,187 @@
+WITH
+	points AS (
+        SELECT
+			*, ST_AsGeoJSON(ST_Centroid(ST_Transform(p.way, 4326)))::json AS center_json
+		FROM
+			planet_osm_point p
+		WHERE
+				p.amenity ='parking'
+		AND
+			ST_Intersects(p.way, ST_Transform(ST_Buffer(ST_Point(17.0206976890053, 48.3077338759222)::geography,30000)::geometry, 3857))
+    ),
+	areas AS (
+        SELECT
+			*, ST_AsGeoJSON(ST_Centroid(ST_Transform(p.way, 4326)))::json AS center_json, ST_AsGeoJSON(ST_Transform(p.way, 4326))::json AS way_json
+		FROM
+			planet_osm_polygon p
+		WHERE
+				p.amenity ='parking'
+		AND
+			ST_Intersects(p.way, ST_Transform(ST_Buffer(ST_Point(17.0206976890053, 48.3077338759222)::geography,30000)::geometry, 3857))
+    )
+SELECT points.osm_id as point_osm_id, points.way as point_way, points.name as point_name, areas.osm_id as area_osm_id, areas.way as area_way, areas.name as area_name
+FROM points as points
+JOIN areas AS areas
+ON st_within(points.way, areas.way);
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT
+    s.*, ST_asGeoJSON(ST_transform(s.way, 4326))::json AS center_json, t.importance
+FROM
+    planet_osm_point s
+INNER JOIN
+	(
+		WITH stations AS (
+			SELECT p.osm_id, p.way FROM planet_osm_point AS p WHERE (((p.amenity = '') OR (p.amenity = 'fuel') OR (p.amenity = 'charging_station')) AND (ST_contains(ST_transform(ST_MakeEnvelope(17.04361438751221, 48.16574193703424, 17.084383964538578, 48.18823514773272, 4326), 3857), p.way)))
+		), roads AS (
+			SELECT l.osm_id, l.way FROM planet_osm_line AS l WHERE ((l.highway = 'primary' OR l.highway = 'primary_link') AND (ST_intersects(ST_transform(ST_MakeEnvelope(17.04361438751221, 48.16574193703424, 17.084383964538578, 48.18823514773272, 4326), 3857), l.way)))
+		)
+		SELECT
+			s.osm_id, max(
+			CASE
+				WHEN (st_distance(s.way, r.way) < 500) THEN 3
+				WHEN (st_distance(s.way, r.way) < 1500) THEN 2
+				WHEN (st_distance(s.way, r.way) < 5000) THEN 1
+				ELSE 0
+			END) AS importance
+		FROM
+			stations AS s
+		CROSS JOIN
+			roads AS r
+		GROUP BY s.osm_id
+    ) t
+ON
+    s.osm_id = t.osm_id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WITH stations AS (
+	SELECT *, ST_asGeoJSON(ST_transform(p.way, 4326))::json as center_json FROM planet_osm_point AS p WHERE (((p.amenity = 'fuel') OR (p.amenity = 'charging_station')) AND (ST_contains(ST_transform(ST_MakeEnvelope(16.949071884155277, 48.57865142738219, 17.074642181396488, 48.653892050644785, 4326), 3857), p.way)))
+), roads AS (
+	SELECT *, ST_asGeoJSON(ST_transform(l.way, 4326))::json as way_json FROM planet_osm_line AS l WHERE (((l.highway = 'primary') OR (l.highway = 'primary_link')) AND (ST_intersects(ST_transform(ST_MakeEnvelope(16.949071884155277, 48.57865142738219, 17.074642181396488, 48.653892050644785, 4326), 3857), l.way)))
+)
+SELECT
+	s.osm_id AS point_osm_id,
+	st_distance(s.way, r.way) AS distance,
+	r.osm_id AS road_osm_id, r.highway AS road_type,
+	CASE
+		WHEN (st_distance(s.way, r.way) < 500) THEN 3
+		WHEN (st_distance(s.way, r.way) < 1500) THEN 2
+		WHEN (st_distance(s.way, r.way) < 5000) THEN 1
+		ELSE 0
+	END AS importance
+FROM
+	stations AS s
+CROSS JOIN
+	roads AS r
+ORDER BY
+	importance DESC, distance ASC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

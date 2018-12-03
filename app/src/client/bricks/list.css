@@ -1,0 +1,86 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+
+.list-header {
+    z-index: 2;
+    padding: 8px;
+    background: #f4e641;
+    font-size: 13pt;
+    color: #1b1b26;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.list-header > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+.list-header > div:last-child {
+    font-size: 10pt;
+    display: flex;
+}
+
+.list-header > div:last-child > div {
+    margin-right: 8px;
+    opacity: 0.8;
+}
+
+.list-elements {
+    background: #1b1b26;
+    z-index: 2;
+    overflow: scroll;
+    height: 0;
+    flex: 1 0 auto;
+}
+
+.list-elements > .list-element {
+    padding: 16px;
+    cursor: pointer;
+    background: #1b1b26;
+    color: white;
+    border-bottom: 1px solid #2f2e27;
+}
+
+.list-elements > .list-element img {
+    width: 30px;
+    height: 30px;
+}
+
+.list-elements > .list-element .label {
+    font-size: 13pt;
+    color: #f4e641;
+    font-weight: normal;
+}
+
+.list-elements > .list-element > .station-importance {
+    font-size: 9pt;
+    color: #fff;
+    opacity: 0.6;
+    margin-left: 41px;
+    margin-top: 0;
+}
+
+.list-elements > .list-element > .station-operator {
+    font-size: 9pt;
+    color: #fff;
+    margin-left: 41px;
+    margin-top: 0;
+}
+
+.list-elements > .list-element:hover {
+    background: #090913;
+}
+
+.route-search-distance button {
+    border-radius: 100px;
+    color: black;
+    background-color: #f4e641;
+}

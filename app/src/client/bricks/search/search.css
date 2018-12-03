@@ -1,0 +1,36 @@
+.search {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    padding: 8px 0 8px 0;
+    background: black;
+}
+
+.search .dropdown {
+    height: fit-content;
+    max-height: 200px;
+    width: 100%;
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background: white;
+    box-shadow: 0 0 10px black;
+}
+
+.search .dropdown-container {
+    position: relative;
+    color: black;
+}
+
+.search .dropdown-container .dropdown-item {
+    height: fit-content;
+    width: 100%;
+    background: white;
+}
+
+.search .dropdown-container .dropdown-item:hover {
+    background: gray;
+    color: white;
+}

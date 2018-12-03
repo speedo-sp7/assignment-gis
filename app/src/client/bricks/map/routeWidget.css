@@ -1,0 +1,46 @@
+.route-widget {
+    color: black;
+}
+
+.route-widget .leaflet-routing-container, .routeWidget .leaflet-routing-error {
+    width: 100%;
+    background-color: black;
+    font-size: 11pt;
+}
+
+.leaflet-routing-alt, .leaflet-routing-geocoders, .leaflet-routing-error {
+    border: none;
+}
+
+.leaflet-routing-alternatives-container {
+    background-color: #1b1b26;
+    color: white;
+}
+
+.leaflet-routing-add-waypoint {
+    color: black;
+}
+
+.leaflet-routing-geocoders {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.leaflet-routing-alt {
+    border-bottom: 1px solid #f4e641;
+    max-height: 180px;
+}
+
+.leaflet-routing-geocoder input {
+    border-radius: 2px;
+}
+
+.leaflet-bar {
+    box-shadow: none;
+}
+
+.route-info {
+    color: white;
+    font-size: 10pt;
+}

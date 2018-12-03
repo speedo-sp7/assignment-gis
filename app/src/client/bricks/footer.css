@@ -1,0 +1,13 @@
+.footer {
+    background: black;
+    color: #a8a8a8;
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    z-index: 6;
+    padding: 8px;
+}
+
+.footer div {
+    transform: translateX(-36px);
+}

@@ -1,0 +1,14 @@
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 11pt;
+}
+
+button {
+    font-size: 11pt;
+}
+
+.btn-default {
+    text-shadow: none;
+}

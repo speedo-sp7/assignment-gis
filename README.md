@@ -16,12 +16,44 @@ Build a map-based application, which lets the user see geo-based data on a map a
 
 - [Open Street Maps](https://www.openstreetmap.org/)
 
-## My project
+## My project - STATIONITY
 
-Fill in (either in English, or in Slovak):
+**Application description**: Implemented app is designed to simplify searching for fuel and electric 
+stations in Slovak Republic. It allows user to search stations by searching the map or by using address. 
+It is also possible to find stations near selected route. Stations also provide details about their 
+neighborhood (parking lots, car services).
 
-**Application description**: `<fill in>`
+**Data source**: All used data were downloaded from [Open Street Maps Geofabrik server](https://download.geofabrik.de/europe/slovakia.html) - [Open Street Maps](https://www.openstreetmap.org/) data.
 
-**Data source**: `<fill in>`
+**Technologies used**:
+- React, Redux, Bootstrap - FE part of application
+- Node.js, Express - BE part of application
+- Leaflet (react-leaflet) - maps API
+- Leaflet Routing Machine (leaflet-routing-machine) - routing (route calculation and display)
+- Squel - query builder
+- Nominatim OpenStreetMap - reverse geocoding (search address)
 
-**Technologies used**: `<fill in>`
+## How to Build & Run (MacOS)
+1. INSTALL POSTGRESQL, POSTGIS
+    1. UNINSTALL OLDER POSTGRES: brew uninstall --force postgresql
+    2. UNINSTALL OLDER POSTGIS: rm -rf /usr/local/var/postgres
+    3. INSTALL POSTGRES: brew install postgres
+    4. INSTALL POSTGIS: brew install postgis
+    5. START PostgreSQL SERVER: pg_ctl -D /usr/local/var/postgres start (to stop: pg_ctl -D /usr/local/var/postgres stop)
+    6. INIT DATABASE: initdb /usr/local/var/postgres (if error: rm -r /usr/local/var/postgres)
+    7. START SERVER: pg_ctl -D /usr/local/var/postgres -l logfile start
+    8. CREATE DATABASE: createdb fiit_pdt_project
+    9. ENABLE POSTGIS: psql fiit_pdt_project (WILL SHOW PSQL COMMAND PROMPT)
+    10. CREATE EXTENSION FOR POSTGIS: CREATE EXTENSION postgis;
+    11. CHECK POSTGIS VERSION: SELECT PostGIS_Version();
+
+2. IMPORT DATA FROM DOWNLOADED OSM FILE - [Open Street Maps Geofabrik server](https://download.geofabrik.de/europe/slovakia.html):
+    - database: fiit_pdt_project
+    - user: postgres
+    - RUN COMMAND: “osm2pgsql -m -U stanislav -d fiit_pdt_project -H localhost ~/path_to_file/slovakia-latest.osm”
+
+3. BUILD & RUN APP
+    1. INSTALL DEPENDENCIES: npm install
+    2. START DEVELOPMENT SERVER: npm run dev
+    3. BUILD FOR PRODUCSTION: npm run build
+    4. START PRODUCTION SERVER: npm start

@@ -1,0 +1,22 @@
+.search-content {
+    background: #1b1b26;
+    color: white;
+    flex: 1 0 auto;
+    overflow: scroll;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-content > .label {
+    font-size: 26pt;
+    padding: 11pt;
+    border: 1px solid #0f0f1a;
+    background: #f4e641;
+    color: #0f0f1a;
+    font-weight: bold;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    border-radius: 0;
+}

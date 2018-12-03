@@ -1,0 +1,17 @@
+.near-special-places {
+}
+
+.special-popup {
+    display: flex;
+    flex-direction: column;
+}
+
+.special-popup > span {
+    font-size: 10pt;
+    font-weight: normal;
+}
+
+.special-popup > span:first-child {
+    font-size: 12pt;
+    font-weight: bold;
+}

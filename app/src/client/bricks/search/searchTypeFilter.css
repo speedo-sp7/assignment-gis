@@ -1,0 +1,17 @@
+.search-type-filter {
+    display: flex;
+    flex-shrink: 0;
+    pointer-events: all;
+}
+
+.search-type-filter button {
+    margin-right: 8px;
+    background: gray;
+    color: black;
+    font-size: 10pt;
+}
+
+.search-type-filter button.selected {
+    background: #f4e641;
+    color: black;
+}

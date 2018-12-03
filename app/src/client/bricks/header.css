@@ -1,0 +1,21 @@
+.header {
+    background: black;
+    color: #f4e641;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    z-index: 6;
+    padding: 8px;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.header .app-icon {
+    width: 20px;
+    margin-right: 8px;
+}
+
+.header .app-name {
+    transform: translateY(1px);
+    margin-left: 4px;
+}

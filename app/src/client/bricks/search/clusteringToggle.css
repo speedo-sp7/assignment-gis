@@ -1,0 +1,16 @@
+.clustering-toggle {
+    padding: 8px;
+    background: #f00;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    pointer-events: all;
+    font-size: 10pt;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.clustering-toggle.inactive {
+    background: gray;
+    color: black;
+}
