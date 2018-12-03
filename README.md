@@ -1,3 +1,5 @@
+### Author: Stanislav Vnenčák
+
 # General course assignment
 
 Build a map-based application, which lets the user see geo-based data on a map and filter/search through it in a meaningfull way. Specify the details and build it in your language of choice. The application should have 3 components:
